@@ -25,7 +25,15 @@ jpa.hibernate.ddl-auto=create-drop
  Para realizar os testes é preciso utilizar a anotação @ExtendWith do framework Junit e passar como parâmetro a classe MockitoExtension, assim será possível
  realizar o mock da camada service e simular seu comportamento.
  
-- 
+- Para testar a camada controller é necessário utilizar a anotação @WebMvcTest que se encarregará to fire up an application context that contains only the beans needed for testing a web controller e passar como parâmetro a classe controller que deseja ser testada. <br>
+Um dos recursos que vem junto do contexto gerado pelo spring é o MockMvc responsável por simular as requests HTTP; e por fim realizar o mock da camada service para ter acesso a lógica de négocio da aplicação.
+
+#### Tests Coverage:
+| Layer         | Coverage     |
+| ------------- | -------------|
+| Repository    |      100%    |
+| Service       |      100%    | 
+| Controller    |      100%    |
 
 [Back](https://github.com/Lukasveiga/employee-rest-api)
  
