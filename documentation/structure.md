@@ -11,7 +11,26 @@ Controller --> Service --> Repository
 Para sinalizar ao framework que se trata de uma cada service basta utilizar a anotação @Service no topo da classe que implementa a interface do service. <br>
 `Obs`: Alguns métodos que realizam alterações no banco de dados precisam ser marcados como transacionais, para garantir a atomicidade do processo e evitar que perturbações externas possam interromper a ação e não finalizar por completo o processo. Para isso basta anotar com @Transactional do spring o método que modifica os dados no banco de dados.     
 
-- Controller: 
+- Controller: Essa camada é responsável por receber as requestes HTTP e enviar as respostas de acordo com modelo da aplicação. Ela realiza a injeção da interface service para ter acesso a lógica de negócio. Para sinalizar ao framework que essa camada é um controller basta anotar com @RestController no topo da classe.
+
+#### Database (MySQL):
+
+- Para a aplicação foi criado o banco de dados employee_db e a tabela employee, seguindo o seguinte comando dentro do mysql:
+```
+create database if not exist 'employee_db';
+use 'employee_db';
+
+drop table if exists 'employee';
+
+create table 'employee' (
+	'id' int not null auto_increment,
+	'first_name' varchar(45) default null,
+	'last_name' varchar(45) default null,
+	'email' varchar(45) default null,
+	
+	primary key('id')
+) engine=InnoDB auto_increment=1 default charset=utf8mb4;
+``` 
 
 
 [Back](https://github.com/Lukasveiga/employee-rest-api)
