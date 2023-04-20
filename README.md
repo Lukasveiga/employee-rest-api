@@ -14,7 +14,6 @@ The main focus of this API is to develop skills in back-end structure developmen
 - Spring Boot;
 - MySQL;
 - Maven;
-- Docker;
 
 -----
 
