@@ -8,3 +8,6 @@ Controller --> Service --> Repository
  Extendendo a classe JpaRepository do spring framework é possível obter grande parte dos métodos utilizados na comunicação com o bando de dados, caso seja necessário utilizar um método específico que a classe não fornece basta adicionar a interface.
  
  - Service: 
+
+
+[Back](https://github.com/Lukasveiga/employee-rest-api)
