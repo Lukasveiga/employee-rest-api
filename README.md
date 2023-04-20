@@ -85,6 +85,14 @@ The main focus of this API is to develop skills in back-end structure developmen
 
 ------
 
+### [Tests](https://github.com/Lukasveiga/employee-rest-api/blob/dev/documentation/test.md)
+
+------
+
+### Setup:
+
+------
+
 ### Autor:
 
 - [Linkedin](https://www.linkedin.com/in/lukas-veiga-79371b20a/);
