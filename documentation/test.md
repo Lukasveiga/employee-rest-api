@@ -1,4 +1,4 @@
-### Unit and Integrations tests:
+### Unit and Integration tests:
 
   #### Unit tests:
   - Para testar a camada respository foi utilizada o banco de dados em mémoria h2 para evitar alterações no banco de dados original. 
