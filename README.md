@@ -4,7 +4,7 @@
 
 This API consists of a simple employee management application, containing information about first name, last name, and email. It is possible to perform all CRUD operations (Create, Read, Update, and Delete) on the database through the endpoints.
 
-The main focus of this API is to develop skills in back-end structure development using the **Spring Boot framework**, including **clean code** best practices, **SOLID** principles, layer pattern, and **unit** and **integration testing**.
+The main focus of this API is to develop skills in back-end structure development using the **Spring Boot** framework, including **clean code** best practices, **SOLID** principles, layer pattern, and **unit** and **integration testing**.
 
 -----
 
