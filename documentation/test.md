@@ -29,11 +29,11 @@ jpa.hibernate.ddl-auto=create-drop
 Um dos recursos que vem junto do contexto gerado pelo spring é o MockMvc responsável por simular as requests HTTP; e por fim realizar o mock da camada service para ter acesso a lógica de négocio da aplicação.
 
 #### Tests Coverage:
-| Layer         | Coverage     |
-| ------------- | -------------|
-| Repository    |      100%    |
-| Service       |      100%    | 
-| Controller    |      100%    |
+| Layer         | Coverage      |
+| ------------- | ------------- |
+| Repository    |      100%     | 
+| Service       |      100%     | 
+| Controller    |      100%     |
 
 [Back](https://github.com/Lukasveiga/employee-rest-api)
  
