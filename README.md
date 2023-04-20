@@ -2,13 +2,9 @@
 
 ### Overview:
 
-Essa API consiste em uma simples aplicação de gestão de funcionários, contendo informações
-sobre o primeiro nome, último nome e email.
-Onde é possível realizar todas as operações do CRUD (Create, Read, Update e Delete) no banco
-de dados por meio dos endpoints. <br>
-O foco principal dessa API é desenvolver habilidades no desenvolvimento de estruturas do back-end
-com o framework Spring Boot incluindo as boas práticas do clean code, princípios SOLID, padrão de camadas
-e os testes unitário e de integração.
+This API consists of a simple employee management application, containing information about first name, last name, and email. It is possible to perform all CRUD operations (Create, Read, Update, and Delete) on the database through the endpoints.
+
+The main focus of this API is to develop skills in back-end structure development using the **Spring Boot framework**, including **clean code** best practices, **SOLID** principles, layer pattern, and **unit** and **integration testing**.
 
 -----
 
