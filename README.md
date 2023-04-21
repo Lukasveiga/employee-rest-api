@@ -103,7 +103,7 @@ The main focus of this API is to develop skills in back-end structure developmen
   spring.datasource.password={password}
  ```
  
- Replacing {database} with the database name, {username} with username and {password} with password without the {}.
+ Eeplace {database} with the database name, {username} with username and {password} with password without the {}.
  
  4. And run with IDE of your choice or maven command lines.
  
