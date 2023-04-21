@@ -1,21 +1,21 @@
 ### Code structure:
 
-A estrutura do código segue o padrão de camadas dividindo a aplicação em **resository**, **service** and **controller** onde cada parte possui sua responsabilidade bem definida.
+The code structure follows the layers pattern dividing the application into **resository**, **service** and **controller** where each part has its well-defined single responsibility.
 
 Controller --> Service --> Repository
 
- - Repository: Essa camada é responsável pela comunicação com o banco de dados sem especificar de fato a regra do negócio. Para a coneçxão com o banco de dados é necessário configurar o spring fornecendo a url, usuário e senha do banco de dados que no nosso caso foi utilizado o MySQL (na seção setup será demonstrado como realizar as configurações dessa etapa).<br>
- Extendendo a classe **JpaRepository** do spring framework é possível obter grande parte dos métodos utilizados na comunicação com o bando de dados, caso seja necessário utilizar um método específico que a classe não fornece basta adicionar a interface.
+ - Repository: This layer is responsible for communicating with the database without actually specifying the business rule. To connect to the database it is necessary to configure spring by providing the url, user and password of the database, which in our case MySQL was used (the setup section will show how to configure this step).<br>
+ By extending the spring framework's **JpaRepository** class it is possible to obtain most of the methods used in communicating with the database, if it is necessary to use a specific method that the class does not provide, just add the interface.
  
- - Service: É a camada responsável pela lógico de négocio, onde serão implementados as ações do CRUD (create, read, update and delete). O service realiza a injeção da interface repository para ter acesso aos métodos de comunição com o banco de dados e estabelecer a conexão entre a camada controller e a respository. <br>
-Para sinalizar ao framework que se trata de uma cada service basta utilizar a anotação @Service no topo da classe que implementa a interface do service. <br>
-`Obs`: Alguns métodos que realizam alterações no banco de dados precisam ser marcados como transacionais, para garantir a atomicidade do processo e evitar que perturbações externas possam interromper a ação e não finalizar por completo o processo. Para isso basta anotar com @Transactional do spring o método que modifica os dados no banco de dados.     
+ - Service: It is the layer responsible for the business logic, where the CRUD actions (create, read, update and delete) will be implemented. The service injects the repository interface to access the database communication methods and establish the connection between the controller layer and the repository. <br>
+To signal to the framework that it is a service, just use the @Service annotation at the top of the class that implements the service interface. <br>
+`Obs`: Some methods that make changes to the database need to be marked as transactional, to guarantee the atomicity of the process and prevent external disturbances from interrupting the action and not completely ending the process. For that, just annotate with @Transactional from spring the method that modifies the data in the database.
 
-- Controller: Essa camada é responsável por receber as requestes HTTP e enviar as respostas de acordo com modelo da aplicação. Ela realiza a injeção da interface service para ter acesso a lógica de negócio. Para sinalizar ao framework que essa camada é um controller basta anotar com @RestController no topo da classe.
+- Controller: This layer is responsible for receiving HTTP requests and sending responses according to the application model. It injects the service interface to access the business logic. To signal to the framework that this layer is a controller, just annotate it with @RestController at the top of the class.
 
 #### Database (MySQL):
 
-- Para a aplicação foi criado o banco de dados employee_db e a tabela employee, seguindo o seguinte comando dentro do mysql:
+- For the application, the employee_db database and the employee table were created, following the following command within mysql:
 ```
 create database if not exist 'employee_db';
 use 'employee_db';
