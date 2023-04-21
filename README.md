@@ -91,6 +91,22 @@ The main focus of this API is to develop skills in back-end structure developmen
 
 ### Setup:
 
+1. Go to the directory that you would like to clone the repository;
+2. Clone the repository and create a local copy following the command above:
+  ```
+    git clone https://github.com/Lukasveiga/employee-rest-api.git
+  ```
+ 3. Insert que file application.properties in the resources folder in the main directory with the following spring configuration to setup the MySQL database:
+ ```
+  spring.datasource.url=jdbc:mysql://localhost:3306/{database}
+  spring.datasource.username={username}
+  spring.datasource.password={password}
+ ```
+ 
+ Replacing {database} with the database name, {username} with username and {password} with password without the {}.
+ 
+ 4. And run with IDE of your choice or maven command lines.
+ 
 ------
 
 ### Autor:
