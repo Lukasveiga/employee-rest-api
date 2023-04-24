@@ -61,7 +61,7 @@ class CrudEmployeeApplicationTests {
     void getEmployeesByFirstName_shouldReturnEmployee() throws Exception {
         Employee employee = employees.get(0);
         this.mockMvc
-                .perform(get("/api/v1/employees/first-name?name=" + employee.getFirstName()))
+                .perform(get("/api/v1/employees/first-name?name={firstName}", employee.getFirstName()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$[0].firstName").value(employee.getFirstName()))
@@ -82,7 +82,7 @@ class CrudEmployeeApplicationTests {
     void getEmployeesByFirstName_shouldReturnNoContent404() throws Exception {
         String firstName = "Carl";
         this.mockMvc
-                .perform(get("/api/v1/employees/first-name?name=" + firstName))
+                .perform(get("/api/v1/employees/first-name?name={firstName}", firstName))
                 .andExpect(status().isNotFound())
                 .andDo(print());
     }
@@ -91,7 +91,7 @@ class CrudEmployeeApplicationTests {
     void getEmployeeById_shouldReturnEmployee() throws Exception {
         Employee employee = employees.get(0);
         this.mockMvc
-                .perform(get("/api/v1/employees/" + employee.getId()))
+                .perform(get("/api/v1/employees/{id}", employee.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.firstName").value(employee.getFirstName()))
@@ -104,7 +104,7 @@ class CrudEmployeeApplicationTests {
     void getEmployeeById_shouldReturnContent404() throws Exception {
         int id = employees.size() + 1;
         this.mockMvc
-                .perform(get("/api/v1/employees/" + id))
+                .perform(get("/api/v1/employees/{id}", id))
                 .andExpect(status().isNotFound())
                 .andDo(print());
     }
@@ -142,7 +142,7 @@ class CrudEmployeeApplicationTests {
         Employee employee = new Employee("Carl", "Sagan", "carl@email.com");
         String json = mapper.writeValueAsString(employee);
         this.mockMvc
-                .perform(put("/api/v1/employees/" + id)
+                .perform(put("/api/v1/employees/{id}", id)
                                  .contentType("application/json")
                                  .content(json))
                 .andExpect(status().isOk())
@@ -155,7 +155,7 @@ class CrudEmployeeApplicationTests {
         Employee employee = new Employee("Carl", "", "carl@email.com");
         String json = mapper.writeValueAsString(employee);
         this.mockMvc
-                .perform(put("/api/v1/employees/" + id)
+                .perform(put("/api/v1/employees/{id}", id)
                                  .contentType("application/json")
                                  .content(json))
                 .andExpect(status().isBadRequest())
@@ -168,7 +168,7 @@ class CrudEmployeeApplicationTests {
         Employee employee = new Employee("Carl", "Sagan", "carl@email.com");
         String json = mapper.writeValueAsString(employee);
         this.mockMvc
-                .perform(put("/api/v1/employees/" + id)
+                .perform(put("/api/v1/employees/{id}", id)
                                  .contentType("application/json")
                                  .content(json))
                 .andExpect(status().isNotFound())
@@ -179,7 +179,7 @@ class CrudEmployeeApplicationTests {
     void deleteEmployee_shouldDeleteEmployee() throws Exception {
         Employee employee = employees.get(0);
         this.mockMvc
-                .perform(delete("/api/v1/employees/" + employee.getId()))
+                .perform(delete("/api/v1/employees/{id}", employee.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Employee %s %s was deleted.".formatted(employee.getFirstName(), employee.getLastName())))
                 .andDo(print());
@@ -189,7 +189,7 @@ class CrudEmployeeApplicationTests {
     void deleteEmployee_shouldReturnNoFound404() throws Exception {
         int id = employees.size() + 1;
         this.mockMvc
-                .perform(delete("/api/v1/employees/" + id))
+                .perform(delete("/api/v1/employees/{id}", id))
                 .andExpect(status().isNotFound())
                 .andDo(print());
     }
