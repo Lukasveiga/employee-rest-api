@@ -82,7 +82,7 @@ public class EmployeeControllerTest {
                 thenReturn(List.of(employee));
 
         this.mockMvc
-                .perform(get("/api/v1/employees/first-name?name=" + firstName))
+                .perform(get("/api/v1/employees/first-name?name={firstName}", firstName))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$[0].firstName").value(employee.getFirstName()))
@@ -109,7 +109,7 @@ public class EmployeeControllerTest {
                 .thenThrow(EmployeeNotFoundException.class);
 
         this.mockMvc
-                .perform(get("/api/v1/employees/first-name?name=" + firstName))
+                .perform(get("/api/v1/employees/first-name?name={firstName}", firstName))
                 .andExpect(status().isNotFound())
                 .andDo(print());
     }
@@ -121,7 +121,7 @@ public class EmployeeControllerTest {
                 .thenReturn(employee);
 
         this.mockMvc
-                .perform(get("/api/v1/employees/" + id))
+                .perform(get("/api/v1/employees/{id}", id))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.firstName").value(employee.getFirstName()))
@@ -136,7 +136,7 @@ public class EmployeeControllerTest {
                 .thenThrow(EmployeeNotFoundException.class);
 
         this.mockMvc
-                .perform(get("/api/v1/employees/1"))
+                .perform(get("/api/v1/employees/{id}", 1))
                 .andExpect(status().isNotFound())
                 .andDo(print());
     }
@@ -179,7 +179,7 @@ public class EmployeeControllerTest {
                 .thenReturn(employee);
 
         this.mockMvc
-                .perform(put("/api/v1/employees/" + employee.getId())
+                .perform(put("/api/v1/employees/{id}", employee.getId())
                                  .contentType("application/json")
                                  .content(json))
                 .andExpect(status().isOk())
@@ -192,7 +192,7 @@ public class EmployeeControllerTest {
         String json = mapper.writeValueAsString(employee);
 
         this.mockMvc
-                .perform(put("/api/v1/employees/" + employee.getId())
+                .perform(put("/api/v1/employees/{id}", employee.getId())
                                  .contentType("application/json")
                                  .content(json))
                 .andExpect(status().isBadRequest())
@@ -208,7 +208,7 @@ public class EmployeeControllerTest {
                 .thenThrow(EmployeeNotFoundException.class);
 
         this.mockMvc
-                .perform(put("/api/v1/employees" + id)
+                .perform(put("/api/v1/employees{id}", id)
                                  .contentType("application/json")
                                  .content(json))
                 .andExpect(status().isNotFound())
@@ -221,7 +221,7 @@ public class EmployeeControllerTest {
                 .thenReturn("Employee %s %s was deleted.".formatted(employee.getFirstName(), employee.getLastName()));
 
         this.mockMvc
-                .perform(delete("/api/v1/employees/" + employee.getId()))
+                .perform(delete("/api/v1/employees/{id}", employee.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Employee %s %s was deleted.".formatted(employee.getFirstName(), employee.getLastName())))
                 .andDo(print());
@@ -234,7 +234,7 @@ public class EmployeeControllerTest {
         when(service.deleteById(id)).thenThrow(EmployeeNotFoundException.class);
 
         this.mockMvc
-                .perform(delete("/api/v1/employees/" + id))
+                .perform(delete("/api/v1/employees/{id}", id))
                 .andExpect(status().isNotFound())
                 .andDo(print());
     }
